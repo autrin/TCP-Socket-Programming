@@ -21,11 +21,13 @@ int main (int argc, char *argv[]){
     }
     printf("Socket binded\n");
 
-    if(listen(serverSocket, 5) < 0){ // 5 is the number of allowed pending connections
+    if(listen(serverSocket, 5) < 0){ // server listens to port, 5 is the number of allowed pending connections
         printf("Error listening on socket\n");
         return 1;
     }
     printf("Listening on socket\n");
 
+    int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddr, sizeof(clientAddr)); //
+    
     return 0;
 }
