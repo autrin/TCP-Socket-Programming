@@ -41,5 +41,11 @@ int main (int argc, char *argv[]){
         return 1;
     }
     printf("Data read from client: %s\n", buffer);
+
+    int numByteSent = write(clientSocket, buffer, sizeof(buffer)); // server writes data to client //! might need to change buffer
+    if(numByteSent < 0){
+        perror("Error writing to client\n");
+        return 1;
+    }
     return 0;
 }
