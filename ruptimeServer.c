@@ -10,5 +10,7 @@ int main (int argc, char *argv[]){
     }
     printf("Socket created\n");
 
+    struct sockaddr_in serverAddr, clientAddr;
+
     return 0;
 }
