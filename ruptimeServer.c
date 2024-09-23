@@ -7,7 +7,7 @@ int main (int argc, char *argv[]){
     struct sockaddr_in serverAddr, clientAddr;
 
     if (serverSocket < 0){
-        perror("Error creating socket\n");
+        perror("Error creating server socket\n");
         return 1;
     }
     printf("Socket created\n");
