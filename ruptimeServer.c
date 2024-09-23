@@ -5,7 +5,7 @@
 int main (int argc, char *argv[]){
     int serverSocket = socket(PF_INET, SOCK_STREAM, 0);
     struct sockaddr_in serverAddr, clientAddr;
-
+    char buffer[1024];
     if (serverSocket < 0){
         perror("Error creating server socket\n");
         return 1;
@@ -34,6 +34,12 @@ int main (int argc, char *argv[]){
     }
     printf("Connection accepted\n");
 
-
+    // server reads data from client
+    int numBytesRead = read(clientSocket, buffer, sizeof(buffer));
+    if(numBytesRead < 0){
+        perror("Error reading from client\n");
+        return 1;
+    }
+    printf("Data read from client: %s\n", buffer);
     return 0;
 }
