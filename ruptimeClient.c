@@ -27,7 +27,8 @@ int main(int argc, char *argv[]){
         perror("Error writing to server\n");
         return 1;
     }
-    printf("Data written to server\n");
+    printf("Data written to server %s\n", buffer);
+
 
     return 0;
 }
