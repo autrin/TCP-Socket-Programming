@@ -15,6 +15,11 @@ int main (int argc, char *argv[]){
     serverAddr.sin_port = htons(atoi(argv[1])); // server port to send a message to
     serverAddr.sin_addr.s_addr = inet_addr(INADDR_ANY); // Server ip address to send a message to
     
-  
+    if(bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) < 0){
+        printf("Error binding socket\n");
+        return 1;
+    }
+    printf("Socket binded\n");
+
     return 0;
 }
