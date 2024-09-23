@@ -21,5 +21,11 @@ int main (int argc, char *argv[]){
     }
     printf("Socket binded\n");
 
+    if(listen(serverSocket, 5) < 0){ // 5 is the number of allowed pending connections
+        printf("Error listening on socket\n");
+        return 1;
+    }
+    printf("Listening on socket\n");
+
     return 0;
 }
