@@ -50,6 +50,7 @@ int main (int argc, char *argv[]){
     }
     printf("Data sent to client: %s\n:", sentData);
 
+    close(clientSocket);
     
     return 0;
 }
