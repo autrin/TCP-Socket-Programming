@@ -48,5 +48,8 @@ int main (int argc, char *argv[]){
         perror("Error writing to client\n");
         return 1;
     }
+    printf("Data sent to client: %s\n:", sentData);
+
+    
     return 0;
 }
