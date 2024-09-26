@@ -38,5 +38,10 @@ int main(int argc, char *argv[]){
     printf("Data read from server: %s\n", receivedData);
     
     close(clientSocket); // close client socket
+    if(clientSocket < 0){
+        perror("Error closing client socket\n");
+        return 1;
+    }
+    printf("Client socket closed\n");
     return 0;
 }
