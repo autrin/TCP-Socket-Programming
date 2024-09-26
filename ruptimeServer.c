@@ -56,5 +56,7 @@ int main (int argc, char *argv[]){
         return 1;
     }
     printf("Client socket closed\n");
+
+    close(serverSocket);
     return 0;
 }
