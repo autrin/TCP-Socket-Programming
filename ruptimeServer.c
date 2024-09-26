@@ -58,5 +58,10 @@ int main (int argc, char *argv[]){
     printf("Client socket closed\n");
 
     close(serverSocket);
+    if(serverSocket < 0){
+        perror("Error closing server socket\n");
+        return 1;
+    }
+    printf("Server socket closed\n");
     return 0;
 }
