@@ -36,5 +36,7 @@ int main(int argc, char *argv[]){
         return 1;
     }
     printf("Data read from server: %s\n", receivedData);
+    
+    close(clientSocket); // close client socket
     return 0;
 }
