@@ -30,7 +30,11 @@ int main(int argc, char *argv[]){
     }
     printf("Data written to server %s\n", sentData);
 
-    int numBytesRead = read(clientSocket, receivedData, sizeof(receivedData));
-    
+    int numBytesRead = read(clientSocket, receivedData, sizeof(receivedData)); // client reads data
+    if(numBytesRead < 0){
+        perror("Error reading from server\n");
+        return 1;
+    }
+    printf("Data read from server: %s\n", receivedData);
     return 0;
 }
