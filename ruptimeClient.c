@@ -5,7 +5,8 @@
 int main(int argc, char *argv[]){
     int clientSocket;
     struct sockaddr_in serverAddr;
-    char buffer[1024];
+    char sentData[1024];
+    char receivedData[1024];
 
     serverAddr.sin_family = PF_INET; // communicatio domain
     serverAddr.sin_port = htons(atoi(argv[1])); // server port to send a message to
@@ -22,13 +23,14 @@ int main(int argc, char *argv[]){
         return 1;
     }
     printf("Connected to server\n");
-    int numBytesSent = write(clientSocket, buffer, sizeof(buffer));
+    int numBytesSent = write(clientSocket, sentData, sizeof(sentData));
     if(numBytesSent < 0){ // client writes data over socket
         perror("Error writing to server\n");
         return 1;
     }
-    printf("Data written to server %s\n", buffer);
+    printf("Data written to server %s\n", sentData);
 
-
+    int numBytesRead = read(clientSocket, receivedData, sizeof(receivedData));
+    
     return 0;
 }
