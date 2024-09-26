@@ -51,6 +51,10 @@ int main (int argc, char *argv[]){
     printf("Data sent to client: %s\n:", sentData);
 
     close(clientSocket);
-    
+    if(clientSocket < 0){
+        perror("Error closing client socket\n");
+        return 1;
+    }
+    printf("Client socket closed\n");
     return 0;
 }
