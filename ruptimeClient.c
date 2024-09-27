@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <string.h>
 
 int main(int argc, char *argv[]){
     int clientSocket;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]){
     }
     printf("Connected to server\n");
 
-    int numBytesSent = write(clientSocket, sentData, sizeof(sentData));
+    int numBytesSent = write(clientSocket, sentData, strlen(sentData));
     if(numBytesSent < 0){ // client writes data over socket
         perror("Error writing to server\n");
         return 1;
