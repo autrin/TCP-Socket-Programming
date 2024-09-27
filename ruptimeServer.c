@@ -75,14 +75,7 @@ int main (int argc, char *argv[]){
     }
     printf("Data sent to client: %s\n:", sentData);
     // Sample output: 192.168.254.2: 10:47am up 27 day(s), 50 mins, 1 user, load average: 0.18, 0.26, 0.20
-    fp = popen("uptime", "r");
-    if(fp == NULL){
-        perror("popen failed");
-        exit(1);    
-    }
-    while(fgets(receivedData, sizeof(receivedData), fp)){
-        printf("%s", receivedData);
-    }
+    
     close(clientSocket);
     if(clientSocket < 0){
         perror("Error closing client socket\n");
