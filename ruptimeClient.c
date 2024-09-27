@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
     }
     printf("Client socket created\n");
 
-    serverAddr.sin_family = PF_INET; // communicatio domain
+    serverAddr.sin_family = PF_INET; // communication domain
     serverAddr.sin_port = htons(atoi(argv[1])); // server port to send a message to
     serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1"); // Localhost IP address for testing
     
