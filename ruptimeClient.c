@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
     }
     printf("Client socket created\n");
     socklen_t sercverAddrSize = sizeof(serverAddr);
-    if(connect(clientSocket, (struct sockaddr *) &serverAddr, sercverAddrSize) < 0){
+    if(connect(clientSocket, (struct sockaddr *) &serverAddr, sercverAddrSize) < 0){ // (struct sockaddr *) &serverAddr casts the address of serverAddr to a pointer
         perror("Error connecting to server\n");
         return 1;
     }
@@ -35,6 +35,8 @@ int main(int argc, char *argv[]){
         perror("Error reading from server\n");
         return 1;
     }
+    // Sample output: 192.168.254.2: 10:47am up 27 day(s), 50 mins, 1 user, load average: 0.18, 0.26, 0.20
+    
     printf("Data read from server: %s\n", receivedData);
     
     close(clientSocket); // close client socket
