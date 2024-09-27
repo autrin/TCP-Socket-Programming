@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
         printf("Connection accepted\n");
 
         // server reads data from client
-        int numBytesRead = read(clientSocket, receivedData, sizeof(receivedData));
+        int numBytesRead = read(clientSocket, receivedData, sizeof(receivedData) - 1);
         if (numBytesRead < 0)
         {
             perror("Error reading from client\n");
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
         pclose(fp);
 
         // send the uptime data to the client
-        int numByteSent = write(clientSocket, sentData, sizeof(sentData)); //! sizeof or strlen?
+        int numByteSent = write(clientSocket, sentData, strlen(sentData)); //! sizeof or strlen?
         if (numByteSent < 0)
         {
             perror("Error writing to client\n");
