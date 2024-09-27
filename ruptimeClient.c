@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
     char sentData[1024];
     char receivedData[1024];
     FILE *fp;
-    
+
     serverAddr.sin_family = PF_INET; // communicatio domain
     serverAddr.sin_port = htons(atoi(argv[1])); // server port to send a message to
     serverAddr.sin_addr.s_addr = inet_addr(INADDR_ANY); // Server ip address to send a message to
@@ -37,7 +37,8 @@ int main(int argc, char *argv[]){
         return 1;
     }
     // Sample output: 192.168.254.2: 10:47am up 27 day(s), 50 mins, 1 user, load average: 0.18, 0.26, 0.20
-
+    fp = popen("uptime", "r");
+    
     printf("Data read from server: %s\n", receivedData);
     
     close(clientSocket); // close client socket
