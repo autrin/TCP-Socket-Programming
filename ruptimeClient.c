@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <cstdlib>
 
 int main(int argc, char *argv[]){
     int clientSocket;
@@ -38,6 +39,10 @@ int main(int argc, char *argv[]){
     }
     // Sample output: 192.168.254.2: 10:47am up 27 day(s), 50 mins, 1 user, load average: 0.18, 0.26, 0.20
     fp = popen("uptime", "r");
+    if(fp == NULL){
+        perror("popen failed");
+        exit(EXIT_FAILURE);    
+    }
     
     printf("Data read from server: %s\n", receivedData);
     
