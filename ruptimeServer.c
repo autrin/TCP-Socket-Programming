@@ -54,6 +54,13 @@ int main (int argc, char *argv[]){
     receivedData[numBytesRead] = '\0'; // Null-terminate the string
     printf("Data read from client: %s\n", receivedData);
 
+    // Capture the system uptime using popen()
+    fp = popen("uptime", "r");
+    if(fp == NULL){
+        perror("popen failed");
+        return 1;
+    }
+
     int numByteSent = write(clientSocket, sentData, sizeof(sentData));
     if(numByteSent < 0){
         perror("Error writing to client\n");
