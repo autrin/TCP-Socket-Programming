@@ -61,7 +61,14 @@ int main (int argc, char *argv[]){
         return 1;
     }
 
-    int numByteSent = write(clientSocket, sentData, sizeof(sentData));
+    // read the output of uptime and store it in sentData
+    memset(sentData, 0, sizeof(sentData)); // clear sentData buffer
+    if(fgets(sentData, sizeof(sentData), fp)){
+        printf("Uptime data: %s\n", sentData);
+    }
+    pclose(fp);
+
+    int numByteSent = write(clientSocket, sentData, sizeof(sentData)); //! sizeof or strlen?
     if(numByteSent < 0){
         perror("Error writing to client\n");
         return 1;
