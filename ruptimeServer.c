@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
 
 int main (int argc, char *argv[]){
     int serverSocket = socket(PF_INET, SOCK_STREAM, 0);
@@ -15,7 +17,7 @@ int main (int argc, char *argv[]){
 
     serverAddr.sin_family = PF_INET; // communicatio domain
     serverAddr.sin_port = htons(atoi(argv[1])); // server port to send a message to
-    serverAddr.sin_addr.s_addr = inet_addr(INADDR_ANY); // Server ip address to send a message to
+    serverAddr.sin_addr.s_addr = INADDR_ANY; // Server ip address to send a message to
     
     if(bind(serverSocket, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) < 0){
         perror("Error binding socket\n");
