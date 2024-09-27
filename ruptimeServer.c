@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
         pclose(fp);
 
         // send the uptime data to the client
-        int numByteSent = write(clientSocket, sentData, strlen(sentData)); //! sizeof or strlen?
+        int numByteSent = write(clientSocket, sentData, strlen(sentData));
         if (numByteSent < 0)
         {
             perror("Error writing to client\n");
